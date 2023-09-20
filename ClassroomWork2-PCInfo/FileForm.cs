@@ -16,14 +16,15 @@ namespace ClassroomWork2_PCInfo
     {
         DirectoryInfo files;
         int counter = 0;
-        string download = "C:\\Users\\safim\\Downloads";
-        string temp = "C:\\Users\\safim\\AppData\\Local\\Temp";
-        string desktop = "C:\\Users\\safim\\Desktop";
-        string appdata = "C:\\Users\\safim\\AppData";//не работает  так как нет доступа к системной папке
+        string appdata = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+        string download = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + @"\Downloads";
+        string temp = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\Temp";
+        string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);//не работает  так как нет доступа к системной папке
+
         public FileForm()
         {
             InitializeComponent();
-            comboBoxFile.Items.AddRange(new string[] { "Temp", "Загрузки", "Рабочий стол", "Appadata" });
+            comboBoxFile.Items.AddRange(new string[] { "Temp", "Загрузки", "Рабочий стол", "Appdata" });
             this.Height = 500;
             this.Width = 500;
         }
